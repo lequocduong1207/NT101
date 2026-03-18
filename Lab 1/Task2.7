@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+int gcd(int a, int b) {
+    while (b) {
+        a %= b;
+        swap(a, b);
+    }
+    return a;
+}
+
+
+int modInverse(int a) {
+    for (int x = 1; x < 26; x++) {
+        if (((a % 26) * (x % 26)) % 26 == 1) return x;
+    }
+    return -1;
+}
+
+
+string encrypt(string text, int a, int b) {
+    string result = "";
+    for (char c : text) {
+        if (isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+            result += (char)((((a * (c - base)) + b) % 26) + base);
+        }
+        else {
+            result += c; 
+        }
+    }
+    return result;
+}
+
+
+string decrypt(string text, int a, int b) {
+    string result = "";
+    int a_inv = modInverse(a);
+    if (a_inv == -1) return "Loi: Khong tim thay nghich dao cua a!";
+
+    for (char c : text) {
+        if (isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+        
+            int val = (a_inv * (c - base - b + 26)) % 26;
+            result += (char)(val + base);
+        }
+        else {
+            result += c;
+        }
+    }
+    return result;
+}
+
+int main() {
+    int a, b, choice;
+    string input;
+
+    cout << "--- HE THONG MAT MA AFFINE ---" << endl;
+    cout << "1. Ma hoa (Encryption)\n2. Giai ma (Decryption)\nChon: ";
+    cin >> choice;
+    cin.ignore(); 
+
+    cout << "Nhap thong diep: ";
+    getline(cin, input);
+
+    cout << "Nhap khoa a (phai nguyen to cung nhau voi 26): ";
+    cin >> a;
+    if (gcd(a, 26) != 1) {
+        cout << "Loi: Khoa a khong hop le! (goi y: dung 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)" << endl;
+        return 0;
+    }
+
+    cout << "Nhap khoa b: ";
+    cin >> b;
+
+    if (choice == 1) {
+        cout << "\n=> Ban ma: " << encrypt(input, a, b) << endl;
+    }
+    else {
+        cout << "\n=> Ban ro: " << decrypt(input, a, b) << endl;
+    }
+
+    return 0;
+}
