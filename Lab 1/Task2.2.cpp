@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Frequency analysis: ánh xạ theo thứ tự ETAOIN... để tạo plaintext ước lượng.
 string frequencyAnalysis(string cipher) {
     vector<int> freq(26, 0);
 
@@ -49,6 +50,7 @@ string frequencyAnalysis(string cipher) {
     return result;
 }
 
+// Main: đọc 1 dòng ciphertext.
 int main() {
     string ciphertext;
     getline(cin, ciphertext);

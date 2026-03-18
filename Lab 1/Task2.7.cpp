@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Mã hóa Rail Fence (zigzag) theo số rails.
 string railFenceEncrypt(const string& text, int rails) {
     if (rails <= 1) return text;
 
@@ -24,6 +25,7 @@ string railFenceEncrypt(const string& text, int rails) {
     return out;
 }
 
+// Giải mã Rail Fence (đánh dấu zigzag -> điền theo hàng -> đọc zigzag).
 string railFenceDecrypt(const string& cipher, int rails) {
     if (rails <= 1) return cipher;
     int n = (int)cipher.size();
@@ -61,6 +63,7 @@ string railFenceDecrypt(const string& cipher, int rails) {
     return plain;
 }
 
+// Main: Encrypt/Decrypt hoặc brute-force rails.
 int main() {
     cout << "=== Rail Fence Cipher ===\n";
     cout << "1) Encrypt\n";

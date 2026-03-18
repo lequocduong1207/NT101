@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Tần suất chữ cái tiếng Anh (chuẩn) để so khớp.
 double ts_chuan[26] = {
     0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015, 0.06094,
     0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929,
@@ -13,6 +14,7 @@ double ts_chuan[26] = {
     0.01974, 0.00074
 };
 
+// Tính Index of Coincidence (IC) cho chuỗi A-Z.
 double tinh_IC(string s) {
     int n = s.length();
     if (n <= 1) return 0;
@@ -23,6 +25,7 @@ double tinh_IC(string s) {
     return ic / (n * (n - 1));
 }
 
+// Main: đọc ciphertext, ước lượng độ dài khóa và tìm khóa.
 int main() {
     string input, ban_ma = "";
     cout << "Nhap ban ma (Xuong dong 2 lan de bat dau):" << endl;

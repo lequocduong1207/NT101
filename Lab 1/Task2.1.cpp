@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Dịch chuyển 1 ký tự theo Caesar cipher (giữ nguyên ký tự không phải chữ).
 char shift(char x, int key) {
     if (x >= 'a' && x <= 'z') {
         return char((x - 'a' + key + 26) % 26 + 'a');
@@ -15,6 +16,7 @@ char shift(char x, int key) {
     }
 }
 
+// Mã hóa Caesar cho cả chuỗi.
 string encrypt(string text, int key) {
     string ciphertext = "";
     for (char x: text) {
@@ -23,10 +25,12 @@ string encrypt(string text, int key) {
     return ciphertext;
 }
 
+// Giải mã Caesar (tương đương encrypt với -key).
 string decrypt(string text, int key) {
     return encrypt(text, -key);
 }
 
+// Brute-force Caesar: thử key 0..25.
 int main() {
     string plaintext;
     getline(cin, plaintext);
