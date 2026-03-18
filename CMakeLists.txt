@@ -5,5 +5,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(NT101
         "Lab 1/Task2.1.cpp"
-        task2.5.cpp
-        "task 2.4.cpp")
+        "Lab 1/task2.5.cpp"
+        "Lab 1/task 2.4.cpp")
