@@ -1,5 +1,3 @@
-//
-// Created by as on 3/18/2026.
 #include <iostream>
 #include <string>
 #include <cctype>
